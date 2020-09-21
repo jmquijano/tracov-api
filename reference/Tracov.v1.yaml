@@ -1,0 +1,361 @@
+openapi: 3.0.0
+info:
+  title: Tracov REST API
+  version: 1.0.3
+  description: |-
+    Tracov REST API presents the COVID-19 cases in the Philippines. It offers basic RESTFul functions from the Department of Health (GOV.PH) COVID-19 Data Drop CSV reports. The API may have its own backend data computation and calculation however none of the data were manipulated, and these data were computed and/or calculated from the raw data file provided publicly by the Department of Health CSV Data Drop. 
+
+    The developer never intends to change, remove, or any type of manipulation of such data provided by the Department of Health. The developer shall not be held liable to any form of data misrepresentation and system errors brought to the end users. This API service is being published as-is and does not offer any form of warranty or insurance to the end users consuming the API.
+
+    You are free to report your concerns through the email addresses listed below. 
+    justinelouis.quijano@ama.edu.ph.
+  contact:
+    name: Justine Quijano
+    email: justinelouis.quijano@ama.edu.ph
+servers:
+  - url: 'https://tracov-api-uat.jmquijano.com/main/v1.0.3'
+    description: User Acceptance Testing
+  - url: 'https://tracov-api-pubtst.jmquijano.com/main/v1.0.3'
+    description: Public Testing Server
+paths:
+  /region/all:
+    get:
+      summary: N/A
+      tags:
+        - Regional Data
+        - All Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items: {}
+                required:
+                  - status
+                  - message
+                  - data
+              examples:
+                Response:
+                  value:
+                    status: true
+                    message: Records were found for regional cases
+                    data:
+                      - regioncode: R-NULL
+                        regionname: ''
+                        regiondesc: null
+                        total: '4780'
+                        recovered: '3530'
+                        death: '10'
+                        active: '1240'
+                      - regioncode: R-BARMM
+                        regionname: BARMM
+                        regiondesc: null
+                        total: '1056'
+                        recovered: '709'
+                        death: '31'
+                        active: '316'
+                      - regioncode: R-CAR
+                        regionname: CAR
+                        regiondesc: null
+                        total: '1169'
+                        recovered: '877'
+                        death: '14'
+                        active: '278'
+                      - regioncode: R-CARAGA
+                        regionname: CARAGA
+                        regiondesc: null
+                        total: '1023'
+                        recovered: '594'
+                        death: '13'
+                        active: '416'
+                      - regioncode: R-NCR
+                        regionname: NCR
+                        regiondesc: null
+                        total: '154700'
+                        recovered: '127368'
+                        death: '2461'
+                        active: '24871'
+                      - regioncode: R-1
+                        regionname: 'Region I: Ilocos Region'
+                        regiondesc: null
+                        total: '1782'
+                        recovered: '1170'
+                        death: '41'
+                        active: '571'
+                      - regioncode: R-2
+                        regionname: 'Region II: Cagayan Valley'
+                        regiondesc: null
+                        total: '1666'
+                        recovered: '1011'
+                        death: '18'
+                        active: '637'
+                      - regioncode: R-3
+                        regionname: 'Region III: Central Luzon'
+                        regiondesc: null
+                        total: '14796'
+                        recovered: '9243'
+                        death: '176'
+                        active: '5377'
+                      - regioncode: R-4A
+                        regionname: 'Region IV-A: CALABARZON'
+                        regiondesc: null
+                        total: '48943'
+                        recovered: '36254'
+                        death: '524'
+                        active: '12165'
+                      - regioncode: R-4B
+                        regionname: 'Region IV-B: MIMAROPA'
+                        regiondesc: null
+                        total: '1192'
+                        recovered: '787'
+                        death: '19'
+                        active: '386'
+                      - regioncode: R-9
+                        regionname: 'Region IX: Zamboanga Peninsula'
+                        regiondesc: null
+                        total: '2093'
+                        recovered: '1576'
+                        death: '75'
+                        active: '442'
+                      - regioncode: R-5
+                        regionname: 'Region V: Bicol Region'
+                        regiondesc: null
+                        total: '2337'
+                        recovered: '1816'
+                        death: '55'
+                        active: '466'
+                      - regioncode: R-6
+                        regionname: 'Region VI: Western Visayas'
+                        regiondesc: null
+                        total: '10163'
+                        recovered: '6963'
+                        death: '161'
+                        active: '3039'
+                      - regioncode: R-7
+                        regionname: 'Region VII: Central Visayas'
+                        regiondesc: null
+                        total: '21568'
+                        recovered: '18865'
+                        death: '1199'
+                        active: '1504'
+                      - regioncode: R-8
+                        regionname: 'Region VIII: Eastern Visayas'
+                        regiondesc: null
+                        total: '4412'
+                        recovered: '3632'
+                        death: '40'
+                        active: '740'
+                      - regioncode: R-10
+                        regionname: 'Region X: Northern Mindanao'
+                        regiondesc: null
+                        total: '2670'
+                        recovered: '1840'
+                        death: '48'
+                        active: '782'
+                      - regioncode: R-11
+                        regionname: 'Region XI: Davao Region'
+                        regiondesc: null
+                        total: '2844'
+                        recovered: '2303'
+                        death: '67'
+                        active: '474'
+                      - regioncode: R-12
+                        regionname: 'Region XII: SOCCSKSARGEN'
+                        regiondesc: null
+                        total: '1377'
+                        recovered: '777'
+                        death: '17'
+                        active: '583'
+                      - regioncode: R-ROF
+                        regionname: ROF
+                        regiondesc: null
+                        total: '11619'
+                        recovered: '10918'
+                        death: '30'
+                        active: '671'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                required:
+                  - status
+                  - message
+              examples:
+                Response:
+                  value:
+                    status: false
+                    message: No records found for regional cases
+      operationId: get-region-all
+      description: 'This endpoint presents total, recovered, death, and active cases from all regions.'
+  /region/nationwide:
+    get:
+      summary: .
+      tags:
+        - Nationwide Cases
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items: {}
+                required:
+                  - status
+                  - message
+                  - data
+              examples:
+                Response:
+                  value:
+                    status: true
+                    message: Records were found for nationwide cases
+                    data:
+                      total: '290190'
+                      recovered: '230233'
+                      death: '4999'
+                      active: '54958'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                required:
+                  - status
+                  - message
+              examples:
+                Response:
+                  value:
+                    status: false
+                    message: No records were found for nationwide cases
+      operationId: get-region-nationwide
+      description: 'This endpoint presents the aggregated total, recovered, death, and active cases from all regions.'
+  '/region/{regioncode}':
+    parameters:
+      - schema:
+          type: string
+        name: regioncode
+        in: path
+        required: true
+        description: |-
+          Select one from the region codes being listed below.
+
+          R-NULL,
+          R-BARMM,
+          R-CAR,
+          R-CARAGA,
+          R-NCR,
+          R-1,
+          R-2,
+          R-3,
+          R-4,
+          R-4A,
+          R-4B,
+          R-5,
+          R-6,
+          R-7,
+          R-8,
+          R-9,
+          R-10,
+          R-11,
+          R-12,
+          R-ROF
+    get:
+      summary: ' '
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items: {}
+                required:
+                  - status
+                  - message
+                  - data
+              examples:
+                Response:
+                  value:
+                    status: true
+                    message: Records were found for regional cases
+                    data:
+                      - regioncode: R-11
+                        regionname: 'Region XI: Davao Region'
+                        regiondesc: null
+                        total: '2844'
+                        recovered: '2303'
+                        death: '67'
+                        active: '474'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                required:
+                  - status
+                  - message
+              examples:
+                Response:
+                  value:
+                    status: false
+                    message: No records found for regional cases
+      operationId: get-region-regioncode
+      description: 'This endpoint presents total, recovered, death, and active cases from the region code filter.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: 'null'
+            examples: {}
+components:
+  schemas: {}
+  securitySchemes: {}
+security: []
+tags:
+  - name: Regional Data
+  - name: All Regions
